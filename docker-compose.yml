@@ -1,0 +1,5 @@
+version: '2'
+services:
+    baby-shark-do-dot:
+        image: seilovskynetskynet/baby-shark-do-dot:v1
+        restart: always

@@ -1,5 +1,6 @@
 package baby.shark.dodot;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
+@Slf4j
 @Service
 public class TelegramBoot extends TelegramLongPollingBot {
 
@@ -40,6 +42,7 @@ public class TelegramBoot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage()) {
+            log.info("got message: {}", update.getMessage().getText());
             if (update.getMessage().isGroupMessage()) {
                 groupMessage(update);
             } else {
